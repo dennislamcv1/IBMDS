@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.7.1/styles/default.min.css">
+  </head>
+  <body>
+    <h1>Practice Assignment</h1>
+    <center>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%204/logo.png" width="300" alt="cognitiveclass.ai logo">
+    </center>
+    <h3>Objectives</h3>
+    <p>After completing the lab you will be able to:</p>
+    <ul>
+      <li>Create a dash board layout</li>
+      <li>Add a bar chart</li>
+    </ul>
+    <p><strong>Estimated time needed:</strong> 45 minutes</p>
+    <h1>About Skills Network Cloud IDE</h1>
+    <p>
+      This Skills Network Labs Cloud IDE (Integrated Development Environment) provides a hands-on environment in your web browser for completing course and project related labs. It utilizes Theia, an open-source IDE platform, that can be run on desktop or on the cloud.
+      So far in the course you have been using Jupyter notebooks to run your python code. This IDE provides an alternative for editing and running your Python code. In this lab you will be using this alternative Python runtime to create and launch your Dash applications.
+    </p>
+    <h3>Important Notice about this lab environment</h3>
+    <p>Please be aware that sessions for this lab environment are not persisted. When you launch the Cloud IDE, you are presented with a 'dedicated computer on the cloud' exclusively for you. This is available to you as long as you are actively working on the labs.</p>
+    <p>Once you close your session or it is timed out due to inactivity, you are logged off, and this ‘dedicated computer on the cloud’ is deleted along with any files you may have created, dowloaded or installed. The next time you launch this lab, a new environment is created for you.</p>
+    <p><em>If you finish only part of the lab and return later, you may have to start from the beginning. So, it is a good idea to plan to your time accordingly and finish your labs in a single session.</em></p>
+    <h1>Get the tool ready</h1>
+    <ol>
+      <li>Install python packages required to run the application. Copy and paste the below command to the terminal.</li>
+    </ol>
+    <pre><code class="hljs language-cmake">python3 -m pip <span class="hljs-keyword">install</span> pandas dash
+</code></pre>
+    <p></p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/pandas_dash_install.PNG" alt="">
+    </p>
+    <pre><code class="hljs language-apache"><span class="hljs-attribute">pip3</span> install httpx==<span class="hljs-number">0</span>.<span class="hljs-number">20</span> dash plotly
+</code></pre>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/httpx.PNG" alt="">
+    </p>
+    <ol start="2">
+      <li>Open a new terminal, by clicking on the menu bar and selecting <strong>Terminal</strong>-><strong>New Terminal</strong>, as in the image below.</li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/open_terminal.png" alt="">
+    </p>
+    <h1>TASK 1 - Dash Application layout</h1>
+    <p>Let's start with</p>
+    <ul>
+      <li>Importing necessary libraries</li>
+      <li>Title added using <code>html.H1()</code> tag</li>
+    </ul>
+    <ol>
+      <li>Create a new python script, by clicking on the menu bar and selecting <strong>File</strong>-><strong>New File</strong>, as in the image below.</li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/new_file1.png" alt="">
+    </p>
+    <ol start="2">
+      <li>Provide the file name as <code>dash_layout.py</code></li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/new_file2.png" alt="">
+    </p>
+    <ol start="3">
+      <li>Copy the below code to the <code>dash_layout.py</code> script and review the code.</li>
+    </ol>
+    <pre><code class="hljs language-coffeescript"><span class="hljs-comment"># Import required packages</span>
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> dash
+<span class="hljs-keyword">import</span> dash_core_components <span class="hljs-keyword">as</span> dcc
+<span class="hljs-keyword">import</span> dash_html_components <span class="hljs-keyword">as</span> html
+<span class="hljs-keyword">import</span> plotly.express <span class="hljs-keyword">as</span> px
+<span class="hljs-keyword">from</span> dash.dependencies <span class="hljs-keyword">import</span> Input, Output
+
+<span class="hljs-comment"># Add Dataframe</span>
+
+<span class="hljs-comment"># Add a bar graph figure</span>
+
+app = dash.Dash()
+app.layout = html.Div(children=[
+    html.H1(
+        children=<span class="hljs-string">'Dashboard'</span>,
+        style={
+            <span class="hljs-string">'textAlign'</span>: <span class="hljs-string">'center'</span>
+        }
+    )
+    
+    <span class="hljs-comment"># Create dropdown</span>
+
+    <span class="hljs-comment"># Bar graph</span>
+])
+
+<span class="hljs-comment"># Run Application</span>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    app.run_server()
+</code></pre>
+    <p></p>
+    <ol start="4">
+      <li>Save the application using <code>Save</code> option from <code>File</code> menu.</li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/save_file.png" alt="">
+    </p>
+    <ol start="5">
+      <li>Run the python file using the following command in the terminal</li>
+    </ol>
+    <pre><code class="hljs language-vim"><span class="hljs-keyword">python3</span> dash_layout.<span class="hljs-keyword">py</span>
+</code></pre>
+    <p></p>
+    <ol start="6">
+      <li>Observe the port number shown in the terminal.</li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/new_run.png" alt="">
+    </p>
+    <ol start="7">
+      <li>Click on the <code>Launch Application</code> option from the side menu bar. Provide the port number and click <code>OK</code></li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/launch_application_updated.PNG" alt="">
+    </p>
+    <blockquote>
+      <p>Note: If you are not able to see the application after launching just check the pop up window for your browser is enabled.</p>
+    </blockquote>
+    <ol start="9">
+      <li>The app will open in a new browser tab like below:</li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/output1.png" alt="">
+    </p>
+    <h2>Add dropdown</h2>
+    <ol>
+      <li>You can generate a drop down as shown below. You do by calling <code>Dropdown</code> off <code>dash_core_components</code> and passing the options as a list of dictionaries. You can set the default value using the <code>value</code> attribute and passing in the default option.</li>
+    </ol>
+    <blockquote>
+      <p>Note:</p>
+      <ul>
+        <li>Add a comma (,) before the placeholder in the skeleton file and then place the code.</li>
+        <li>The placeholder here is "# Create dropdown " in the skeleton file.</li>
+        <li>Add small letter "u" just before the city name "MontrÃ©al" like this <code>u'MontrÃ©al'</code> as it contains special characters.</li>
+      </ul>
+    </blockquote>
+    <pre><code class="hljs language-scheme">   
+    # Create dropdown
+    dcc.Dropdown(<span class="hljs-name">options=</span>[
+            {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'New</span> York City', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'NYC</span>'},
+            {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Montréal</span>', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'MTL</span>'},
+            {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'San</span> Francisco', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'SF</span>'}
+        ],
+        value=<span class="hljs-symbol">'NYC</span>' # Providing a vallue to dropdown
+    )
+
+
+</code></pre>
+    <p></p>
+    <ol start="2">
+      <li>After adding the dropdown the dashboard is displayed as below.</li>
+    </ol>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/output2.png" alt="">
+    </p>
+    <h1>Adding a dataframe</h1>
+    <p>Assume you have a dataframe as:</p>
+    <blockquote>
+      <p>Note: Place the code under the placeholder # Add Dataframe in the skeleton file copied before.</p>
+    </blockquote>
+    <pre><code class="hljs language-json"># Add Dataframe
+df = pd.DataFrame({
+    <span class="hljs-attr">"Fruit"</span>: [<span class="hljs-string">"Apples"</span>, <span class="hljs-string">"Oranges"</span>, <span class="hljs-string">"Bananas"</span>, <span class="hljs-string">"Apples"</span>, <span class="hljs-string">"Oranges"</span>, <span class="hljs-string">"Bananas"</span>],
+    <span class="hljs-attr">"Amount"</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>],
+    <span class="hljs-attr">"City"</span>: [<span class="hljs-string">"SF"</span>, <span class="hljs-string">"SF"</span>, <span class="hljs-string">"SF"</span>, <span class="hljs-string">"NYC"</span>, <span class="hljs-string">"MTL"</span>, <span class="hljs-string">"NYC"</span>]
+})
+
+</code></pre>
+    <p></p>
+    <h1>Task 2: Create Bar graph</h1>
+    <p>The <code>plotly.express</code> module (usually imported as px) contains functions that can create entire figures at once, and is referred to as <code>Plotly Express or PX</code>. Plotly Express is a built-in part of the plotly library, and is the recommended starting point for creating most common figures</p>
+    <p>In order to create a graph on our layout, we use the Graph class from dash_core_components.</p>
+    <blockquote>
+      <p>Note: Place the code under the placeholder # Add a bar graph figure in the skeleton file copied before.</p>
+    </blockquote>
+    <pre><code class="hljs language-routeros">  # <span class="hljs-builtin-name">Add</span> a bar graph figure
+
+  fig = px.bar(df, <span class="hljs-attribute">x</span>=<span class="hljs-string">"Fruit"</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">"Amount"</span>, <span class="hljs-attribute">color</span>=<span class="hljs-string">"City"</span>, <span class="hljs-attribute">barmode</span>=<span class="hljs-string">"group"</span>)
+
+</code></pre>
+    <p></p>
+    <blockquote>
+      <p>Note: Place the code under the placeholder # Bar graph figure in the skeleton file copied before and also add a comma <strong>,</strong> before the placeholder.</p>
+    </blockquote>
+    <pre><code class="hljs language-reasonml">    
+    # Bar graph
+    dcc.<span class="hljs-constructor">Graph(<span class="hljs-params">id</span>='<span class="hljs-params">example</span>-<span class="hljs-params">graph</span>-2',<span class="hljs-params">figure</span>=<span class="hljs-params">fig</span>)</span>
+
+</code></pre>
+    <p></p>
+    <p>The dashboard with the dropdown and the bar graph is displayed as below.</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/output3.png" alt="">
+    </p>
+    <blockquote>
+      <p>Note: Here we are just creating the dropdown and bar chart without any functionality. Let's start with the real dataset to get the dropdown functionality with the graph. When you finish running the application press thekey <code>Ctrl+C</code> near the terminal window</p>
+    </blockquote>
+    <p>to stop the running application and begin with the new application.</p>
+    <p>For complete code click <a href="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/dash_layout.py?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01">HERE</a>.</p>
+    <h1>Task 3: Practice Exercise</h1>
+    <h1>Story:</h1>
+    <p>Here we are looking into an <strong>automobile dataset</strong> which has various attributes like <strong>drive-wheels,body-style and price</strong>.</p>
+    <p>Lets view the snapshot of our selected dataset.</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/dataframe.png" alt="">
+    </p>
+    <p>Here let's say we are selecting 3 important features <strong>drive-wheels, body-style and Price</strong>.</p>
+    <ul>
+      <li>
+        <p>The possible values of drive-wheels are <strong>4 wheel Drive(4wd),Front WheelDrive(fwd) and Rear wheel Drive(rwd)</strong>.</p>
+      </li>
+      <li>
+        <p>The different body styles of the cars are <strong>hardtop,sedan,convertible</strong> and so on.</p>
+      </li>
+      <li>
+        <p>There are 2 types of people here:</p>
+        <ul>
+          <li>
+            <p>A customer who wants to purchase the cars with less price , different body styles and wants to look for the drive wheel with this arrangement.</p>
+          </li>
+          <li>
+            <p>A dealer who wants to showcase the prices for the cars with different body styles and drive wheels.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>As a data analyst, you have been given a task to visually show the <strong>body-style and prices</strong> with respect to each <strong>drive wheel</strong> selected.</p>
+      </li>
+      <li>
+        <p>So ideally you want to showcase this in the form of 2 interactive charts such as <strong>pie chart</strong> and <strong>bar chart</strong> on selection of drive wheel.</p>
+      </li>
+    </ul>
+    <p>Below is the key item,</p>
+    <ul>
+      <li>Drive wheels</li>
+    </ul>
+    <h2>Components of the item</h2>
+    <ol>
+      <li>
+        <p>Drive Wheel Type</p>
+        <p>For the chosen Drive wheel,</p>
+        <ul>
+          <li>
+            <p>Pie Chart showing body style and price.</p>
+          </li>
+          <li>
+            <p>Bar Chart showing body style and price.</p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <h2>Expected Layout</h2>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/new_Layout.png" alt="">
+    </p>
+    <h2>Requirements to create the expected result</h2>
+    <ul>
+      <li>A dropdown <a href="https://dash.plotly.com/dash-core-components/dropdown?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">menu</a>: For choosing Drive wheel type</li>
+      <li>The layout will be designed as follows:</li>
+      <li>An outer division with two inner divisions (as shown in the expected layout)</li>
+      <li>One of the inner divisions will have information about the dropdown(which is the input) and the other one is for adding graphs(the 2 output graphs).</li>
+      <li>Callback function to compute data, create graph and return to the layout.</li>
+    </ul>
+    <h3>To do:</h3>
+    <ol>
+      <li>Import required libraries and read the dataset</li>
+      <li>Create an application layout</li>
+      <li>Add title to the dashboard using HTML H1 component</li>
+      <li>Add a dropdown using dcc.dropdown</li>
+      <li>Add the pie chart and bar chart core graph components.</li>
+      <li>Run the app</li>
+    </ol>
+    <h1>Get the tool ready</h1>
+    <ul>
+      <li>Open a new terminal, by clicking on the menu bar and selecting <strong>Terminal</strong>-><strong>New Terminal</strong>, as in the image below.</li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/open_terminal.png" alt="">
+    </p>
+    <ul>
+      <li>Now, you have a terminal ready to start the lab.</li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/terminal_1.png" alt="">
+    </p>
+    <h1>Get the application skeleton</h1>
+    <ul>
+      <li>Copy and paste the command in the terminal to download the csv.</li>
+    </ul>
+    <pre><code class="hljs language-awk">
+wget https:<span class="hljs-regexp">//</span>cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud<span class="hljs-regexp">/IBMDeveloperSkillsNetwork-DA0101EN-SkillsNetwork/</span>labs<span class="hljs-regexp">/Data%20files/</span>automobileEDA.csv
+</code></pre>
+    <p></p>
+    <p>The csv gets downloaded.</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/copycsv.png" alt="">
+    </p>
+    <p>You can use this as a base code to complete the task below.</p>
+    <h1>Let's create the application</h1>
+    <ul>
+      <li>
+        <p>Create a new file called <code>Dash_Auto.py</code></p>
+      </li>
+      <li>
+        <p>Copy the code mentioned in the skeleton file and save it.</p>
+      </li>
+    </ul>
+    <h2>Structure of the skeleton file</h2>
+    <pre><code class="hljs language-pgsql"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-keyword">import</span> dash
+<span class="hljs-keyword">import</span> dash_html_components <span class="hljs-keyword">as</span> html
+<span class="hljs-keyword">import</span> dash_core_components <span class="hljs-keyword">as</span> dcc
+<span class="hljs-keyword">from</span> dash.dependencies <span class="hljs-keyword">import</span> <span class="hljs-keyword">Input</span>, Output, State
+<span class="hljs-keyword">import</span> plotly.graph_objects <span class="hljs-keyword">as</span> go
+<span class="hljs-keyword">import</span> plotly.express <span class="hljs-keyword">as</span> px
+<span class="hljs-keyword">from</span> dash <span class="hljs-keyword">import</span> no_update
+
+app = dash.Dash(__name__)
+
+# REVIEW1: Clear the layout <span class="hljs-keyword">and</span> <span class="hljs-keyword">do</span> <span class="hljs-keyword">not</span> display <span class="hljs-keyword">exception</span> till callback gets executed
+app.config.suppress_callback_exceptions = <span class="hljs-keyword">True</span>
+
+# <span class="hljs-keyword">Read</span> the automobiles data <span class="hljs-keyword">into</span> pandas dataframe
+auto_data =  pd.read_csv(<span class="hljs-string">'automobileEDA.csv'</span>, 
+                            encoding = "ISO-8859-1",
+                            )
+
+<span class="hljs-meta">#Layout Section of Dash</span>
+
+app.layout = html.Div(children=[#TASK <span class="hljs-number">3</span>A
+
+     #<span class="hljs-keyword">outer</span> division starts
+     html.Div([
+                   # First <span class="hljs-keyword">inner</span> divsion <span class="hljs-keyword">for</span>  adding dropdown helper <span class="hljs-type">text</span> <span class="hljs-keyword">for</span> Selected Drive wheels
+                    html.Div(
+                            #TASK <span class="hljs-number">3</span>B
+                     ),
+                    
+
+                    #TASK <span class="hljs-number">3</span>C
+
+                    #Second <span class="hljs-keyword">Inner</span> division <span class="hljs-keyword">for</span> adding <span class="hljs-number">2</span> <span class="hljs-keyword">inner</span> divisions <span class="hljs-keyword">for</span> <span class="hljs-number">2</span> output graphs 
+                    html.Div([
+                
+                        #TASK <span class="hljs-number">3</span>D
+                        
+                    ], style={<span class="hljs-string">'display'</span>: <span class="hljs-string">'flex'</span>}),
+
+
+    ])
+    #<span class="hljs-keyword">outer</span> division ends
+
+])
+<span class="hljs-meta">#layout ends</span>
+
+<span class="hljs-meta">#Place to add @app.callback Decorator</span>
+<span class="hljs-meta">#TASK 3E</span>
+
+   
+<span class="hljs-meta">#Place to define the callback function .</span>
+<span class="hljs-meta">#TASK 3F</span>
+   
+   
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    app.run_server()
+    
+
+
+
+
+</code></pre>
+    <p></p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/new_save.png" alt="">
+    </p>
+    <h1>Hints to complete TASKS</h1>
+    <p>Search/Look for <code>TASK</code> word in the script to identify places where you need to complete the code.</p>
+    <h1>TASK 3A: Add title to the dashboard</h1>
+    <p>Update the <code>html.H1()</code> tag to hold the application title.</p>
+    <ul>
+      <li>Application title is <code>Car Automobile Components</code></li>
+      <li>Use style parameter provided below to make the title <code>center</code> aligned, with color code <code>#503D36</code>, and font-size as <code>24</code></li>
+    </ul>
+    <pre><code class="hljs language-scheme">html.H<span class="hljs-number">1</span>(<span class="hljs-symbol">'Car</span> Automobile Components', 
+                                style={<span class="hljs-symbol">'textAlign</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'center</span>', <span class="hljs-symbol">'color</span><span class="hljs-symbol">':</span> '#<span class="hljs-number">503</span>D36',
+                                <span class="hljs-symbol">'font-size</span><span class="hljs-symbol">':</span> <span class="hljs-number">24</span>}),
+
+</code></pre>
+    <p></p>
+    <p>After updating the <code>html.H1()</code> with the application title, the <code>app.layout</code> will look like:</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/h1.png" alt="">
+    </p>
+    <p>Reference Links: <a href="https://dash.plotly.com/dash-html-components/h1?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01">H1 component</a></p>
+    <p><a href="https://dash.plotly.com/dash-html-components?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01">Dash HTML Components</a></p>
+    <h1>TASK 3B: Add a Label to the dropdown</h1>
+    <ul>
+      <li>
+        <p>Use the <code>html.H2()</code> tag to hold the label for the dropdown inside the first inner division</p>
+        <ul>
+          <li>
+            <p>Label is <code>Drive Wheels Type:</code></p>
+          </li>
+          <li>
+            <p>Use style parameter provided below to allign the label <code>margin-right</code> with value <code>2em</code> which means 2 times the size of the current font.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code class="hljs language-scheme">html.H<span class="hljs-number">2</span>(<span class="hljs-symbol">'Drive</span> Wheels Type:', style={<span class="hljs-symbol">'margin-right</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'2em</span>'}),
+
+</code></pre>
+    <p></p>
+    <p>After updating the label the <code>app.layout</code> will now look like this</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/h2.png" alt="">
+    </p>
+    <h1>TASK 3C: Next lets add the dropdown right below the first inner division.</h1>
+    <ul>
+      <li>
+        <p>The dropdown has an <code>id</code> as <code>demo-dropdown</code>.</p>
+      </li>
+      <li>
+        <p>These options have the labels as <code>Rear Wheel Drive</code> ,<code>Front Wheel Drive</code> and <code>Four Wheel Drive</code></p>
+      </li>
+      <li>
+        <p>The values allowed in the dropdown are <code>rwd</code>,<code>fwd</code>,<code>4wd</code></p>
+      </li>
+      <li>
+        <p>The default value when the dropdown is displayed is <code>rwd</code>.</p>
+      </li>
+    </ul>
+    <pre><code class="hljs language-scheme">  dcc.Dropdown(
+                            id=<span class="hljs-symbol">'demo-dropdown</span>',
+                        options=[
+                             {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Rear</span> Wheel Drive', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'rwd</span>'},
+                            {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Front</span> Wheel Drive', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'fwd</span>'},
+                             {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Four</span> Wheel Drive', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'4wd</span>'}
+        ],
+        value=<span class="hljs-symbol">'rwd</span>'
+        ),
+</code></pre>
+    <p></p>
+    <p>Reference <a href="https://dash.plotly.com/dash-core-components/dropdown?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">link</a></p>
+    <p>Once you add the dropdown the '<code>app.layout</code> will appear as follows</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/dropdown.png" alt="">
+    </p>
+    <h1>TASK 3D: Add two empty divisions for output inside the next inner division .</h1>
+    <ul>
+      <li>
+        <p>Use 2 <code>html.Div()</code> tags .</p>
+      </li>
+      <li>
+        <p>Provide division ids as <code>plot1</code> and <code>plot2</code>.</p>
+      </li>
+    </ul>
+    <pre><code class="hljs language-ini">html.Div(<span class="hljs-section">[ ]</span>, <span class="hljs-attr">id</span>=<span class="hljs-string">'plot1'</span>),
+html.Div(<span class="hljs-section">[ ]</span>, <span class="hljs-attr">id</span>=<span class="hljs-string">'plot2'</span>)
+</code></pre>
+    <p></p>
+    <p>Once you add the divisions the '<code>app.layout</code> will appear as follows</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/plot1plot2.png" alt="">
+    </p>
+    <h1>TASK 3E: Add the Ouput and input components inside the app.callback decorator.</h1>
+    <ul>
+      <li>The <code>inputs</code> and <code>outputs</code> of our application's interface are described declaratively as the arguments of <code>@app.callback</code> decorator.</li>
+    </ul>
+    <p>-In Dash, the <code>inputs</code> and <code>outputs</code> of our application are simply the properties of a particular component.</p>
+    <ul>
+      <li>
+        <p>In this example, our input is the <code>value</code> property of the component that has the ID <code>demo-dropdown</code></p>
+      </li>
+      <li>
+        <p>Our layout has 2 outputs so we need to create 2 output components.</p>
+      </li>
+    </ul>
+    <p>It is a list with 2 output parameters with component id and property. Here, the component property will be <code>children</code> as we have created empty division and passing in <code>dcc.Graph</code> (figure) after computation.</p>
+    <p>Component ids will be <code>plot1</code> , <code>plot2</code>.</p>
+    <pre><code class="hljs language-routeros">@app.callback([Output(<span class="hljs-attribute">component_id</span>=<span class="hljs-string">'plot1'</span>, <span class="hljs-attribute">component_property</span>=<span class="hljs-string">'children'</span>),
+               Output(<span class="hljs-attribute">component_id</span>=<span class="hljs-string">'plot2'</span>, <span class="hljs-attribute">component_property</span>=<span class="hljs-string">'children'</span>)],
+               Input(<span class="hljs-attribute">component_id</span>=<span class="hljs-string">'demo-dropdown'</span>, <span class="hljs-attribute">component_property</span>=<span class="hljs-string">'value'</span>))
+</code></pre>
+    <p></p>
+    <p>Once you add the callback decorator the '<code>app.layout</code> will appear as follows</p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/callbackdec.png" alt="">
+    </p>
+    <h1>TASK 3F: Add the callback function.</h1>
+    <ul>
+      <li>Whenever an input property changes, the function that the callback decorator wraps will get called automatically.</li>
+      <li>In this case let us define a function <code>display_selected_drive_charts()</code> which will be wrapped by our decorator.</li>
+      <li>The function first filters our dataframe <code>auto_data</code> by the selected value of the drive-wheels from the dropdown as follows</li>
+      <li><code>auto_data[auto_data['drive-wheels']==value]</code> .</li>
+      <li>Next we will group by the <code>drive-wheels</code> and <code>body-style</code> and calculate the mean <code>price</code> of the dataframe.</li>
+      <li>Use the <code>px.pie()</code> and <code>px.bar()</code> function we will plot the pie chart and bar chart</li>
+    </ul>
+    <pre><code class="hljs language-routeros">def display_selected_drive_charts(value):
+   
+
+   
+   filtered_df = auto_data[auto_data[<span class="hljs-string">'drive-wheels'</span>]==value].groupby([<span class="hljs-string">'drive-wheels'</span>,<span class="hljs-string">'body-style'</span>],<span class="hljs-attribute">as_index</span>=<span class="hljs-literal">False</span>). \
+            mean()
+        
+   filtered_df = filtered_df
+   
+   fig1 = px.pie(filtered_df, <span class="hljs-attribute">values</span>=<span class="hljs-string">'price'</span>, <span class="hljs-attribute">names</span>=<span class="hljs-string">'body-style'</span>, <span class="hljs-attribute">title</span>=<span class="hljs-string">"Pie Chart"</span>)
+   fig2 = px.bar(filtered_df, <span class="hljs-attribute">x</span>=<span class="hljs-string">'body-style'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'price'</span>, <span class="hljs-attribute">title</span>=<span class="hljs-string">'Bar Chart'</span>)
+    
+   return [dcc.Graph(<span class="hljs-attribute">figure</span>=fig1),
+            dcc.Graph(<span class="hljs-attribute">figure</span>=fig2) ]
+</code></pre>
+    <p></p>
+    <ul>
+      <li>Here for the pie chart we pass the <code>filtered dataframe</code> where <code>values</code> correspond to <code>price</code> and names will be <code>body-style</code></li>
+      <li>For the bar chart also we will pass the <code>filtered dataframe</code> where x-axis corresponds to <code>body-style</code> and y-axis as <code>price</code>.</li>
+      <li>Finally we return the 2 figure objects <code>fig1</code> and <code>fig2</code> in <code>dcc.Graph</code> method and finally the plots are displayed as follows</li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/callbackfunc.png" alt="">
+    </p>
+    <ul>
+      <li>Once you have finished coding save your code.</li>
+    </ul>
+    <h1>Run the Application</h1>
+    <ul>
+      <li>Firstly, install pandas and dash using the following command</li>
+    </ul>
+    <pre><code class="hljs language-cmake">python3 -m pip <span class="hljs-keyword">install</span> pandas dash
+</code></pre>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/pandas_dash_install.PNG" alt="">
+    </p>
+    <pre><code class="hljs language-apache"><span class="hljs-attribute">pip3</span> install httpx==<span class="hljs-number">0</span>.<span class="hljs-number">20</span> dash plotly
+</code></pre>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/httpx.PNG" alt="">
+    </p>
+    <ul>
+      <li>Next Run the python file using the command</li>
+    </ul>
+    <pre><code class="hljs language-reasonml">python3 <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Dash_Auto</span>.</span></span>py
+</code></pre>
+    <ul>
+      <li>Observe the port number shown in the terminal.</li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/runapp1.png" alt="">
+    </p>
+    <ul>
+      <li>Click on the <code>Launch Application</code> option from the menu bar.</li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/Launch.png" alt="">
+    </p>
+    <ul>
+      <li>Provide the port number and click <code>OK</code></li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/new_port.png" alt="">
+    </p>
+    <ul>
+      <li>The graphs appear on selection of drive wheels.</li>
+    </ul>
+    <p>Refer to the complete code <code>Dash_Auto.py</code> here</p>
+    <pre><code class="hljs language-scheme">import pandas as pd
+import dash
+import dash_html_components as html
+import dash_core_components as dcc
+from dash.dependencies import Input, Output, State
+import plotly.graph_objects as go
+import plotly.express as px
+from dash import no_update
+
+app = dash.Dash(<span class="hljs-name">__name__</span>)
+
+# REVIEW<span class="hljs-number">1</span>: Clear the layout and do not display exception till callback gets executed
+app.config.suppress_callback_exceptions = True
+
+# Read the automobiles data into pandas dataframe
+auto_data =  pd.read_csv(<span class="hljs-symbol">'automobileEDA.csv</span>', 
+                            encoding = <span class="hljs-string">"ISO-8859-1"</span>,
+                            )
+
+#Layout Section of Dash
+
+app.layout = html.Div(<span class="hljs-name">children=</span>[<span class="hljs-name">html.H1</span>(<span class="hljs-symbol">'Car</span> Automobile Components', 
+                                style={<span class="hljs-symbol">'textAlign</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'center</span>', <span class="hljs-symbol">'color</span><span class="hljs-symbol">':</span> '#<span class="hljs-number">503</span>D36',
+                                <span class="hljs-symbol">'font-size</span><span class="hljs-symbol">':</span> <span class="hljs-number">24</span>}),
+
+
+     #outer division starts
+     html.Div([
+                   # First inner divsion for  adding dropdown helper text for Selected Drive wheels
+                    html.Div(
+                            html.H2(<span class="hljs-symbol">'Drive</span> Wheels Type:', style={<span class="hljs-symbol">'margin-right</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'2em</span>'}),
+                     ),
+                    #Second Inner division for adding <span class="hljs-number">2</span> inner divisions for <span class="hljs-number">2</span> output graphs 
+
+                      dcc.Dropdown(
+                            id=<span class="hljs-symbol">'demo-dropdown</span>',
+                        options=[
+                             {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Rear</span> Wheel Drive', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'rwd</span>'},
+                            {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Front</span> Wheel Drive', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'fwd</span>'},
+                             {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'Four</span> Wheel Drive', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'4wd</span>'}
+        ],
+        value=<span class="hljs-symbol">'rwd</span>'
+        ),
+                    #Second Inner division for adding <span class="hljs-number">2</span> inner divisions for <span class="hljs-number">2</span> output graphs 
+
+                    html.Div([
+                
+                        html.Div([ ], id=<span class="hljs-symbol">'plot1</span>'),
+                        html.Div([ ], id=<span class="hljs-symbol">'plot2</span>')
+
+                        
+                    ], style={<span class="hljs-symbol">'display</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'flex</span>'}),
+
+
+    ])
+    #outer division ends
+
+])
+#layout ends
+
+#Place to add @app.callback Decorator
+@app.callback([<span class="hljs-name">Output</span>(<span class="hljs-name">component_id=</span><span class="hljs-symbol">'plot1</span>', component_property=<span class="hljs-symbol">'children</span>'),
+               Output(<span class="hljs-name">component_id=</span><span class="hljs-symbol">'plot2</span>', component_property=<span class="hljs-symbol">'children</span>')],
+               Input(<span class="hljs-name">component_id=</span><span class="hljs-symbol">'demo-dropdown</span>', component_property=<span class="hljs-symbol">'value</span>'))
+
+
+   
+#Place to define the callback function .
+def display_selected_drive_charts(<span class="hljs-name">value</span>):
+   
+
+   
+   filtered_df = auto_data[<span class="hljs-name">auto_data</span>[<span class="hljs-symbol">'drive-wheels</span>']==value].groupby([<span class="hljs-symbol">'drive-wheels</span>',<span class="hljs-symbol">'body-style</span>'],as_index=False). \
+            mean()
+        
+   filtered_df = filtered_df
+   
+   fig<span class="hljs-number">1</span> = px.pie(<span class="hljs-name">filtered_df</span>, values=<span class="hljs-symbol">'price</span>', names=<span class="hljs-symbol">'body-style</span>', title=<span class="hljs-string">"Pie Chart"</span>)
+   fig<span class="hljs-number">2</span> = px.bar(<span class="hljs-name">filtered_df</span>, x=<span class="hljs-symbol">'body-style</span>', y=<span class="hljs-symbol">'price</span>', title=<span class="hljs-symbol">'Bar</span> Chart')
+    
+   return [<span class="hljs-name">dcc.Graph</span>(<span class="hljs-name">figure=fig1</span>),
+            dcc.Graph(<span class="hljs-name">figure=fig2</span>) ]
+
+   
+   
+
+
+if __name__ == <span class="hljs-symbol">'__main__</span><span class="hljs-symbol">':</span>
+    app.run_server()
+    
+</code></pre>
+    <p></p>
+    <h3>Congratulations, you have successfully created dash application!</h3>
+    <h2>Author</h2>
+    <p><a href="https://www.linkedin.com/in/malika-goyal-04798622/?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">Malika Singla</a></p>
+    <p><a href="https://www.linkedin.com/in/lakshmi-holla-b39062149/?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">Lakshmi Holla</a></p>
+    <h2>Changelog</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Changed by</th>
+          <th>Change Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2021-07-21</td>
+          <td>0.1</td>
+          <td>Lakshmi Holla, Malika Singla</td>
+          <td>Initial Version</td>
+        </tr>
+        <tr>
+          <td>2022-08-24</td>
+          <td>0.2</td>
+          <td>Pratiksha Verma</td>
+          <td>Updated instructions</td>
+        </tr>
+        <tr>
+          <td>2022-08-29</td>
+          <td>0.3</td>
+          <td>Pratiksha Verma</td>
+          <td>Updated Screenshot</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2></h2>
+    <h3 align="center">© IBM Corporation 2021. All rights reserved.</h3>
+    <h3></h3>
+    <script>window.addEventListener('load', function() {
+snFaculty.inject();
+});</script>
+    <script src="https://skills-network-assets.s3.us.cloud-object-storage.appdomain.cloud/scripts/inject.43989f87.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-badge@0.1.9/highlightjs-badge.min.js"></script>
+  </body>
+</html>

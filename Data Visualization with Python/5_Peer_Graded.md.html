@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.7.1/styles/default.min.css">
+  </head>
+  <body>
+    <h1>Assignment Overview</h1>
+    <center>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%204/logo.png" width="300" alt="cognitiveclass.ai logo">
+    </center>
+    <ul>
+      <li><a href="#story">Story</a></li>
+      <li><a href="#components-of-the-report-items">Components of the report items</a></li>
+      <li><a href="#expected-layout">Expected layout</a></li>
+      <li><a href="#requirements-to-create-the-dashboard">Requirements to create the dashboard</a></li>
+      <li><a href="#what-is-new-in-this-exercise-compared-to-other-labs?">What is new in this exercise compared to other labs?</a></li>
+      <li><a href="#review">Review</a></li>
+      <li><a href="#hints-to-complete-todos">Hints to complete TODOs</a></li>
+    </ul>
+    <p><strong>Estimated time needed:</strong> 45 minutes</p>
+    <h1>About Skills Network Cloud IDE</h1>
+    <p>
+      This Skills Network Labs Cloud IDE (Integrated Development Environment) provides a hands-on environment in your web browser for completing course and project related labs. It utilizes Theia, an open-source IDE platform, that can be run on desktop or on the cloud.
+      So far in the course you have been using Jupyter notebooks to run your python code. This IDE provides an alternative for editing and running your Python code. In this lab you will be using this alternative Python runtime to create and launch your Dash applications.
+    </p>
+    <h3>Important Notice about this lab environment</h3>
+    <p>Please be aware that sessions for this lab environment are not persisted. When you launch the Cloud IDE, you are presented with a 'dedicated computer on the cloud' exclusively for you. This is available to you as long as you are actively working on the labs.</p>
+    <p>Once you close your session or it is timed out due to inactivity, you are logged off, and this 'dedicated computer on the cloud' is deleted along with any files you may have created, dowloaded or installed. The next time you launch this lab, a new environment is created for you.</p>
+    <p><em>If you finish only part of the lab and return later, you may have to start from the beginning. So, it is a good idea to plan to your time accordingly and finish your labs in a single session.</em></p>
+    <h1>Story:</h1>
+    <p>As a data analyst, you have been given a task to monitor and report US domestic airline flights performance. Goal is to analyze the performance of the reporting airline to improve flight reliability thereby improving customer reliability.</p>
+    <p>Below are the key report items,</p>
+    <ul>
+      <li>Yearly airline performance report</li>
+      <li>Yearly average flight delay statistics</li>
+    </ul>
+    <p><em>NOTE:</em> Year range is between 2005 and 2020.</p>
+    <h2>Components of the report items</h2>
+    <ol>
+      <li>
+        <p>Yearly airline performance report</p>
+        <p>For the chosen year provide,</p>
+        <ul>
+          <li>Number of flights under different cancellation categories using bar chart.</li>
+          <li>Average flight time by reporting airline using line chart.</li>
+          <li>Percentage of diverted airport landings per reporting airline using pie chart.</li>
+          <li>Number of flights flying from each state using choropleth map.</li>
+          <li>Number of flights flying to each state from each reporting airline using treemap chart.</li>
+        </ul>
+      </li>
+      <li>
+        <p>Yearly average flight delay statistics</p>
+        <p>For the chosen year provide,</p>
+        <ul>
+          <li>Monthly average carrier delay by reporting airline for the given year.</li>
+          <li>Monthly average weather delay by reporting airline for the given year.</li>
+          <li>Monthly average national air system delay by reporting airline for the given year.</li>
+          <li>Monthly average security delay by reporting airline for the given year.</li>
+          <li>Monthly average late aircraft delay by reporting airline for the given year.</li>
+        </ul>
+        <p><em>NOTE:</em> You have worked created the same dashboard components in <code>Flight Delay Time Statistics Dashboard</code> section. We will be reusing the same.</p>
+      </li>
+    </ol>
+    <h2>Expected Layout</h2>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/Layout.png" alt="">
+    </p>
+    <h2>Requirements to create the expected result</h2>
+    <ul>
+      <li>Two dropdown <a href="https://dash.plotly.com/dash-core-components/dropdown?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">menus</a>: For choosing report type and year</li>
+      <li>Each dropdown will be designed as follows:
+        <ul>
+          <li>An outer division with two inner divisions (as shown in the expected layout)</li>
+          <li>One of the inner divisions will have information about the dropdown and the other one is dropdown.</li>
+        </ul>
+      </li>
+      <li>Layout for adding graphs.</li>
+      <li>Callback function to compute data, create graph and return to the layout.</li>
+    </ul>
+    <h1>Get the application skeleton</h1>
+    <ul>
+      <li>Copy and paste the below command in the terminal to download the skeleton.</li>
+    </ul>
+    <pre><code class="hljs language-awk">wget https:<span class="hljs-regexp">//</span>cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud<span class="hljs-regexp">/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/</span>labs<span class="hljs-regexp">/Module%205/</span><span class="hljs-number">5</span>_Peer_Graded_Assignment_Questions.py
+</code></pre>
+    <p></p>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/get_file.png" alt="">
+    </p>
+    <ul>
+      <li>Open <code>5_Peer_Graded_Assignment_Questions.py</code></li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/open_file.png" alt="">
+    </p>
+    <p>You can use this as a base code to complete the task below.</p>
+    <h2>What's new in this exercise compared to other labs?</h2>
+    <ul>
+      <li>
+        <p>Make sure the layout is clean without any default graphs or graph layouts. We will do this by 3 changes:</p>
+        <ol>
+          <li>Having empty html.Div and use the callback to Output the dcc.graph as the Children of that Div.</li>
+          <li>
+            Add a state variable in addition to callback decorator input and output parameter. This will allow us to pass extra values without firing the callbacks.
+            Here, we need to pass two inputs <code>chart type</code> and <code>year</code>. Input is read only after user entering all the information.
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>Use new html display style <code>flex</code> to arrange the dropdown menu with description.</p>
+      </li>
+      <li>
+        <p>Update app run step to avoid getting error message before initiating callback.</p>
+      </li>
+    </ul>
+    <p><em>NOTE:</em> These steps are only for review.</p>
+    <h1>Let's create the application</h1>
+    <h2>Review</h2>
+    <p>Search/Look for <code>Review</code> word in the script to learn how commands are used and computations are carried out. There are 7 review items.</p>
+    <ul>
+      <li>REVIEW1: Clear the layout and do not display exception till callback gets executed.</li>
+      <li>REVIEW2: Dropdown creation.</li>
+      <li>REVIEW3: Observe how we add an empty division and providing an id that will be updated during callback.</li>
+      <li>REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year.</li>
+      <li>REVIEW5: Number of flights flying from each state using choropleth</li>
+      <li>REVIEW6: Return dcc.Graph component to the empty division</li>
+      <li>REVIEW7: This covers chart type 2 and we have completed this exercise under Flight Delay Time Statistics Dashboard section</li>
+    </ul>
+    <h1>Hints to complete TASKS</h1>
+    <p>Search/Look for <code>TASK</code> word in the script to identify places where you need to complete the code.</p>
+    <h1>TASK1: Add title to the dashboard</h1>
+    <ul>
+      <li>Provide title of the dash application title as <code>US Domestic Airline Flights Performance</code>.</li>
+      <li>
+        Make the heading center aligned, set color as <code>#503D36</code>, and font size as <code>24</code>.
+        Sample: style={'textAlign': 'left', 'color': '#000000', 'font-size': 0}
+      </li>
+    </ul>
+    <p>Reference <a href="https://dash.plotly.com/dash-html-components/h1?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">link</a></p>
+    <h1>TASK2: Add a dropdown menu</h1>
+    <p>Create a dropdown menu and add two chart options to it. Below is the skeleton:</p>
+    <pre><code class="hljs language-scheme">  dcc.Dropdown(<span class="hljs-name">id=</span><span class="hljs-symbol">'....</span>', 
+                   options=[
+                           {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'....</span>', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'...</span>'},
+                           {<span class="hljs-symbol">'label</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'....</span>', <span class="hljs-symbol">'value</span><span class="hljs-symbol">':</span> <span class="hljs-symbol">'...</span>'}
+                           ],
+                  placeholder=<span class="hljs-symbol">'....</span>',
+                  style={....})
+</code></pre>
+    <p>Parameters to be updated in <code>dcc.Dropdown</code>:</p>
+    <ul>
+      <li>
+        <p>Set <code>id</code> as <code>input-type</code>.</p>
+      </li>
+      <li>
+        <p>Set <code>options</code> to list containing dictionaries with key as <code>label</code> and user provided value for labels in <code>value</code>.</p>
+        <p><em>1st dictionary</em></p>
+        <ul>
+          <li>label: Yearly Airline Performance Report</li>
+          <li>value: OPT1</li>
+        </ul>
+        <p><em>2nd dictionary</em></p>
+        <ul>
+          <li>label: Yearly Airline Delay Report</li>
+          <li>value: OPT2</li>
+        </ul>
+      </li>
+      <li>
+        <p>Set placeholder to <code>Select a report type</code>.</p>
+      </li>
+      <li>
+        <p>Set width as <code>80%</code>, padding as <code>3px</code>, font size as <code>20px</code>, text-align-last as <code>center</code> inside style parameter dictionary.</p>
+      </li>
+    </ul>
+    <p>Reference <a href="https://dash.plotly.com/dash-core-components/dropdown?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">link</a></p>
+    <h1>TASK3: Add a division with two empty divisions inside.</h1>
+    <p>Add a division with two empty divisions inside. For reference, observe how code under <code>REVIEW3</code> has been structured.</p>
+    <p>Provide division ids as <code>plot4</code> and <code>plot5</code>. Display style as <code>flex</code>.</p>
+    <h1>TASK4: Add 5 ouput components</h1>
+    <p>Our layout has 5 outputs so we need to create 5 output components. Review how input components are constructed to fill in for output component.</p>
+    <p>It is a list with 5 output parameters with component id and property. Here, the component property will be <code>children</code> as we have created empty division and passing in <code>dcc.Graph</code> (figure) after computation.</p>
+    <p>Component ids will be <code>plot1</code> , <code>plot2</code>, <code>plot2</code>, <code>plot4</code>, and <code>plot5</code>. Skeleton is provided below:</p>
+    <pre><code class="hljs language-scheme">[<span class="hljs-name">Output</span>(<span class="hljs-name">component_id=</span><span class="hljs-symbol">'plot1</span>', component_property=<span class="hljs-symbol">'children</span>'),
+ Output(<span class="hljs-name">....</span>),
+ Output(<span class="hljs-name">....</span>),
+ Output(<span class="hljs-name">....</span>),
+ Output(<span class="hljs-name">....</span>)]
+</code></pre>
+    <h1>TASK5: Average flight time by reporting airline</h1>
+    <p>Create a line plot using returned dataframe <code>line_data</code> from the above function <code>compute_data_choice</code> using <code>plotly.express</code>. Link for reference is <a href="https://plotly.com/python/line-charts/?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">here</a></p>
+    <p>Set:</p>
+    <ul>
+      <li>Figure name as <code>line_fig</code></li>
+      <li>Input data as <code>line_data</code></li>
+      <li>x as <code>Month</code>, y as <code>AirTime</code>, color as <code>Reporting_Airline</code> and <code>title</code> as <code>Average monthly flight time (minutes) by airline</code>.</li>
+    </ul>
+    <p>Below is the skeleton:</p>
+    <pre><code class="hljs language-routeros">figure_name = px.line(input_data, <span class="hljs-attribute">x</span>=<span class="hljs-string">'....'</span>, <span class="hljs-attribute">y</span>=<span class="hljs-string">'...'</span>, <span class="hljs-attribute">color</span>=<span class="hljs-string">'...'</span>, <span class="hljs-attribute">title</span>=<span class="hljs-string">'....'</span>)
+</code></pre>
+    <h1>TASK6: Number of flights flying to each state from each reporting airline</h1>
+    <p>Create a treemap plot using returned dataframe <code>tree_data</code> from the above function <code>compute_data_choice</code> using <code>plotly.express</code>. Link for reference is <a href="https://plotly.com/python/treemaps/?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01" target="_blank" rel="external">here</a></p>
+    <p>Set</p>
+    <ul>
+      <li>Figure name as <code>tree_fig</code></li>
+      <li>Data as <code>tree_data</code></li>
+      <li>Path as <code>['DestState', 'Reporting_Airline']</code></li>
+      <li>Values as <code>Flights</code></li>
+      <li>Colors as <code>Flights</code> and color_continuous_scale as <code>'RdBu'</code></li>
+      <li>Title as <code>'Flight count by airline to destination state'</code></li>
+    </ul>
+    <p>Below is the skeleton:</p>
+    <pre><code class="hljs language-ini"><span class="hljs-attr">tree_fig</span> = px.treemap(data, path=[<span class="hljs-string">'...'</span>, <span class="hljs-string">'...'</span>], 
+                      <span class="hljs-attr">values</span>=<span class="hljs-string">'...'</span>,
+                      <span class="hljs-attr">color</span>=<span class="hljs-string">'...'</span>,
+                      <span class="hljs-attr">color_continuous_scale</span>=<span class="hljs-string">'...'</span>,
+                      <span class="hljs-attr">title</span>=<span class="hljs-string">'...'</span>
+                )
+</code></pre>
+    <h1>Run the Application</h1>
+    <ul>
+      <li>Firstly, install pandas and dash using the following command</li>
+    </ul>
+    <pre><code class="hljs language-cmake">python3 -m pip <span class="hljs-keyword">install</span> pandas dash
+</code></pre>
+    <p></p>
+    <ul>
+      <li>Run the python file using the command</li>
+    </ul>
+    <pre><code class="hljs language-vim"><span class="hljs-keyword">python3</span> <span class="hljs-number">5</span>_Peer_Graded_Assignment_Questions.<span class="hljs-keyword">py</span>
+</code></pre>
+    <p></p>
+    <ul>
+      <li>Observe the port number shown in the terminal.</li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/port.png" alt="">
+    </p>
+    <ul>
+      <li>Click on the <code>Launch Application</code> option from the side menu bar. Provide the port number and click <code>OK</code></li>
+    </ul>
+    <p>
+      <img src="https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/labs/Module%205/images/launch_application_new.PNG" alt="">
+    </p>
+    <h3>Congratulations, you have successfully completed your application!</h3>
+    <h2>Author</h2>
+    <p><a href="https://www.linkedin.com/in/saishruthi-swaminathan?utm_medium=Exinfluencer&#x26;utm_source=Exinfluencer&#x26;utm_content=000026UJ&#x26;utm_term=10006555&#x26;utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDV0101ENSkillsNetwork20297740-2022-01-01&#x26;cm_mmc=Email_Newsletter-_-Developer_Ed%2BTech-_-WW_WW-_-SkillsNetwork-Courses-IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork-20297740&#x26;cm_mmca1=000026UJ&#x26;cm_mmca2=10006555&#x26;cm_mmca3=M12345678&#x26;cvosrc=email.Newsletter.M12345678&#x26;cvo_campaign=000026UJ" target="_blank" rel="external">Saishruthi Swaminathan</a></p>
+    <h2>Changelog</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Version</th>
+          <th>Changed by</th>
+          <th>Change Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>05-10-2021</td>
+          <td>1.0</td>
+          <td>Saishruthi</td>
+          <td>Initial version created</td>
+        </tr>
+        <tr>
+          <td>29-08-2022</td>
+          <td>1.1</td>
+          <td>Pratiksha Verma</td>
+          <td>Updated Screenshot</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2></h2>
+    <h3 align="center">© IBM Corporation 2020. All rights reserved.</h3>
+    <h3></h3>
+    <script>window.addEventListener('load', function() {
+snFaculty.inject();
+});</script>
+    <script src="https://skills-network-assets.s3.us.cloud-object-storage.appdomain.cloud/scripts/inject.43989f87.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.1/highlight.min.js"></script>
+    <script src="https://unpkg.com/highlightjs-badge@0.1.9/highlightjs-badge.min.js"></script>
+  </body>
+</html>
