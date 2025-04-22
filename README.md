@@ -1,5 +1,5 @@
 # IBMDS
-## IBM Data Science Professional Certificate
+## IBM Data Science Professional Certificate (12 course series)
 
 ### About this Professional Certificate
 
